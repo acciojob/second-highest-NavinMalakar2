@@ -1,5 +1,5 @@
 function secondHighest(arr) {
-  if (arr.length < 2) return -Infinity;
+  if (arr.length === 0 || arr.length === 1) return undefined;
 
   let max = -Infinity;
   let second = -Infinity;
@@ -13,9 +13,12 @@ function secondHighest(arr) {
     }
   }
 
-  // If second never updated => all values were equal or only one unique value
+ 
   if (second === -Infinity) {
-    return -Infinity;
+    // Check if all elements are same
+    const allSame = arr.every(val => val === max);
+    if (allSame) return max;
+    return undefined;
   }
 
   return second;
